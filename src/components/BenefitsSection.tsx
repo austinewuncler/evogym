@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import { benefitsSection } from '~/assets';
-import { IBenefit, SelectedPage } from '~/types';
+import { usePage } from '~/hooks';
+import { IBenefit, PageSection } from '~/types';
 
 import ActionButton from './ActionButton';
 import Benefit from './Benefit';
@@ -36,21 +37,21 @@ const container = {
   },
 };
 
-interface Props {
-  setSelectedPage: (value: SelectedPage) => void;
-}
+const BenefitsSection = (): JSX.Element => {
+  const { setActiveSection } = usePage();
 
-const Benefits = ({ setSelectedPage }: Props): JSX.Element => {
   return (
-    <section id="benefits" className="mx-auto min-h-full w-5/6 py-20">
+    <section
+      id={PageSection.Benefits}
+      className="mx-auto min-h-full w-5/6 py-20"
+    >
       <motion.div
         onViewportEnter={() => {
-          setSelectedPage(SelectedPage.Benefits);
+          setActiveSection(PageSection.Benefits);
         }}
       >
-        {/* HEADER */}
         <motion.div
-          className="md:my-5 md:w-3/5"
+          className="lg:my-5 lg:w-3/5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -67,38 +68,29 @@ const Benefits = ({ setSelectedPage }: Props): JSX.Element => {
             care into each and every member.
           </p>
         </motion.div>
-
-        {/* BENEFITS */}
         <motion.div
-          className="mt-5 items-center justify-between gap-8 md:flex"
+          className="mt-5 items-center justify-between gap-8 lg:flex"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           variants={container}
         >
-          {benefits.map((benefit) => (
+          {benefits.map(({ description, icon, title }) => (
             <Benefit
-              key={benefit.title}
-              icon={benefit.icon}
-              title={benefit.title}
-              description={benefit.description}
-              setSelectedPage={setSelectedPage}
+              key={title}
+              icon={icon}
+              title={title}
+              description={description}
             />
           ))}
         </motion.div>
-
-        {/* GRAPHICS AND DESCRIPTION */}
-        <div className="mt-16 items-center justify-between gap-20 md:mt-28 md:flex">
-          {/* GRAPHIC */}
+        <div className="mt-16 items-center justify-between gap-20 lg:mt-28 lg:flex">
           <img
             className="mx-auto"
-            alt="benefits-page-graphic"
+            alt="benefits-section"
             src={benefitsSection}
           />
-
-          {/* DESCRIPTION */}
           <div>
-            {/* TITLE */}
             <div className="relative">
               <div className="before:absolute before:-top-20 before:-left-20 before:z-[1] before:content-abstractwaves">
                 <motion.div
@@ -118,8 +110,6 @@ const Benefits = ({ setSelectedPage }: Props): JSX.Element => {
                 </motion.div>
               </div>
             </div>
-
-            {/* DESCRIPT */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -145,13 +135,9 @@ const Benefits = ({ setSelectedPage }: Props): JSX.Element => {
                 enim mattis odio in risus nunc.
               </p>
             </motion.div>
-
-            {/* BUTTON */}
             <div className="relative mt-16">
               <div className="before:absolute before:-bottom-20 before:right-40 before:z-[-1] before:content-sparkles">
-                <ActionButton setSelectedPage={setSelectedPage}>
-                  Join Now
-                </ActionButton>
+                <ActionButton>Join Now</ActionButton>
               </div>
             </div>
           </div>
@@ -161,4 +147,4 @@ const Benefits = ({ setSelectedPage }: Props): JSX.Element => {
   );
 };
 
-export default Benefits;
+export default BenefitsSection;

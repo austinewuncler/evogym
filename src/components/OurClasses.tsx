@@ -9,7 +9,8 @@ import {
   classImage5,
   classImage6,
 } from '~/assets';
-import { IClass, SelectedPage } from '~/types';
+import { usePage } from '~/hooks';
+import { IClass, PageSection } from '~/types';
 
 import Class from './Class';
 import HText from './HText';
@@ -49,16 +50,17 @@ const classes: IClass[] = [
   },
 ];
 
-interface Props {
-  setSelectedPage: (value: SelectedPage) => void;
-}
+const OurClasses = (): JSX.Element => {
+  const { setActiveSection } = usePage();
 
-const OurClasses = ({ setSelectedPage }: Props): JSX.Element => {
   return (
-    <section id="ourclasses" className="w-full bg-primary-100 py-40">
+    <section
+      id={PageSection.OurClasses}
+      className="w-full bg-primary-100 py-40"
+    >
       <motion.div
         onViewportEnter={() => {
-          setSelectedPage(SelectedPage.OurClasses);
+          setActiveSection(PageSection.OurClasses);
         }}
       >
         <motion.div
@@ -72,7 +74,7 @@ const OurClasses = ({ setSelectedPage }: Props): JSX.Element => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <div className="md:w-3/5">
+          <div className="lg:w-3/5">
             <HText>OUR CLASSES</HText>
             <p className="py-5">
               Fringilla a sed at suspendisse ut enim volutpat. Rhoncus vel est
@@ -84,12 +86,12 @@ const OurClasses = ({ setSelectedPage }: Props): JSX.Element => {
         </motion.div>
         <div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
           <ul className="w-[2800px] whitespace-nowrap">
-            {classes.map((item, index) => (
+            {classes.map(({ image, name, description }, index) => (
               <Class
-                key={`${item.name}-${index}`}
-                name={item.name}
-                description={item.description}
-                image={item.image}
+                key={`${name}-${index}`}
+                name={name}
+                description={description}
+                image={image}
               />
             ))}
           </ul>

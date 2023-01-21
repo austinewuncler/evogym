@@ -9,32 +9,29 @@ import {
   sponsorFortune,
   sponsorRedbull,
 } from '~/assets';
-import { useMediaQuery } from '~/hooks';
-import { SelectedPage } from '~/types';
+import { useMediaQuery, usePage } from '~/hooks';
+import { PageSection } from '~/types';
 
 import ActionButton from './ActionButton';
 
-interface Props {
-  setSelectedPage: (value: SelectedPage) => void;
-}
-
-const Home = ({ setSelectedPage }: Props): JSX.Element => {
-  const isAboveMediumScreens = useMediaQuery('(min-width:1060px)');
+const HeroSection = (): JSX.Element => {
+  const isAboveLargeScreens = useMediaQuery('(min-width:1024px)');
+  const { setActiveSection } = usePage();
 
   return (
-    <section id="home" className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0">
-      {/* IMAGE AND MAIN HEADER */}
+    <section
+      id={PageSection.Hero}
+      className="gap-16 bg-gray-20 py-10 lg:h-full lg:pb-0"
+    >
       <motion.div
-        className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
+        className="mx-auto w-5/6 items-center justify-center lg:flex lg:h-5/6"
         onViewportEnter={() => {
-          setSelectedPage(SelectedPage.Home);
+          setActiveSection(PageSection.Hero);
         }}
       >
-        {/* MAIN HEADER */}
-        <div className="z-10 mt-32 md:basis-3/5">
-          {/* HEADINGS */}
+        <div className="z-10 mt-32 lg:basis-3/5">
           <motion.div
-            className="md:-mt-20"
+            className="lg:-mt-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -45,7 +42,7 @@ const Home = ({ setSelectedPage }: Props): JSX.Element => {
             }}
           >
             <div className="relative">
-              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
+              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] lg:before:content-evolvetext">
                 <img alt="home-page-text" src={homePageText} />
               </div>
             </div>
@@ -56,8 +53,6 @@ const Home = ({ setSelectedPage }: Props): JSX.Element => {
               Body Now.
             </p>
           </motion.div>
-
-          {/* ACTIONS */}
           <motion.div
             className="mt-8 flex items-center gap-8"
             initial="hidden"
@@ -69,32 +64,23 @@ const Home = ({ setSelectedPage }: Props): JSX.Element => {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <ActionButton setSelectedPage={setSelectedPage}>
-              Join Now
-            </ActionButton>
+            <ActionButton>Join Now</ActionButton>
             <AnchorLink
               className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
               onClick={() => {
-                setSelectedPage(SelectedPage.ContactUs);
+                setActiveSection(PageSection.ContactUs);
               }}
-              href={`#${SelectedPage.ContactUs}`}
+              href={`#${PageSection.ContactUs}`}
             >
               <p>Learn More</p>
             </AnchorLink>
           </motion.div>
         </div>
-
-        {/* IMAGE */}
-        <div
-          className="flex basis-3/5 justify-center md:z-10
-              md:ml-40 md:mt-16 md:justify-items-end"
-        >
-          <img alt="home-pageGraphic" src={heroSection} />
+        <div className="flex basis-3/5 justify-center lg:z-10 lg:ml-40 lg:mt-16 lg:justify-items-end">
+          <img alt="hero-section" src={heroSection} />
         </div>
       </motion.div>
-
-      {/* SPONSORS */}
-      {isAboveMediumScreens && (
+      {isAboveLargeScreens && (
         <div className="h-[150px] w-full bg-primary-100 py-10">
           <div className="mx-auto w-5/6">
             <div className="flex w-3/5 items-center justify-between gap-8">
@@ -109,4 +95,4 @@ const Home = ({ setSelectedPage }: Props): JSX.Element => {
   );
 };
 
-export default Home;
+export default HeroSection;

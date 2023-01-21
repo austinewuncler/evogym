@@ -1,28 +1,27 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-import { SelectedPage } from '~/types';
+import { usePage } from '~/hooks';
+import { PageSection } from '~/types';
 
-interface Props {
-  page: string;
-  selectedPage: SelectedPage;
-  setSelectedPage: (value: SelectedPage) => void;
+interface Props extends PropsWithChildren {
+  section: PageSection;
 }
 
-const Link = ({ page, selectedPage, setSelectedPage }: Props): JSX.Element => {
-  const lowerCasePage = page.toLowerCase().replace(/ /g, '') as SelectedPage;
+const Link = ({ children, section }: Props): JSX.Element => {
+  const { activeSection, setActiveSection } = usePage();
 
   return (
     <AnchorLink
-      className={`${selectedPage === lowerCasePage ? 'text-primary-500' : ''}
-        transition duration-500 hover:text-primary-300
-      `}
-      href={`#${lowerCasePage}`}
+      className={`transition hover:text-primary-300 ${
+        section === activeSection ? 'text-primary-500' : ''
+      }`}
+      href={`#${section}`}
       onClick={() => {
-        setSelectedPage(lowerCasePage);
+        setActiveSection(section);
       }}
     >
-      {page}
+      {children}
     </AnchorLink>
   );
 };

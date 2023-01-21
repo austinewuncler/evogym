@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-import { SelectedPage } from '~/types';
+import { usePage } from '~/hooks';
+import { PageSection } from '~/types';
 
 const childVariant = {
   hidden: { opacity: 0, scale: 0.9 },
@@ -13,15 +14,11 @@ interface Props {
   icon: JSX.Element;
   title: string;
   description: string;
-  setSelectedPage: (value: SelectedPage) => void;
 }
 
-const Benefit = ({
-  icon,
-  title,
-  description,
-  setSelectedPage,
-}: Props): JSX.Element => {
+const Benefit = ({ icon, title, description }: Props): JSX.Element => {
+  const { setActiveSection } = usePage();
+
   return (
     <motion.div
       variants={childVariant}
@@ -38,9 +35,9 @@ const Benefit = ({
       <AnchorLink
         className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
         onClick={() => {
-          setSelectedPage(SelectedPage.ContactUs);
+          setActiveSection(PageSection.ContactUs);
         }}
-        href={`#${SelectedPage.ContactUs}`}
+        href={`#${PageSection.ContactUs}`}
       >
         <p>Learn More</p>
       </AnchorLink>

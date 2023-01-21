@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-import { SelectedPage } from '~/types';
+import { usePage } from '~/hooks';
+import { PageSection } from '~/types';
 
-interface Props {
-  children: React.ReactNode;
-  setSelectedPage: (value: SelectedPage) => void;
-}
+interface Props extends PropsWithChildren {}
 
-const ActionButton = ({ children, setSelectedPage }: Props): JSX.Element => {
+const ActionButton = ({ children }: Props): JSX.Element => {
+  const { setActiveSection } = usePage();
+
   return (
     <AnchorLink
       className="rounded-md bg-secondary-500 px-10 py-2 hover:bg-primary-500 hover:text-white"
       onClick={() => {
-        setSelectedPage(SelectedPage.ContactUs);
+        setActiveSection(PageSection.ContactUs);
       }}
-      href={`#${SelectedPage.ContactUs}`}
+      href={`#${PageSection.ContactUs}`}
     >
       {children}
     </AnchorLink>

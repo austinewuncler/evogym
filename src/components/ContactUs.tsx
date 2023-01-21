@@ -3,17 +3,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { contactUsSection } from '~/assets';
-import { SelectedPage } from '~/types';
+import { usePage } from '~/hooks';
+import { PageSection } from '~/types';
 
 import HText from './HText';
 
-interface Props {
-  setSelectedPage: (value: SelectedPage) => void;
-}
-
-const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
-  const inputStyles = `mb-5 w-full rounded-lg bg-primary-300
-  px-5 py-3 placeholder-white`;
+const ContactUs = (): JSX.Element => {
+  const { setActiveSection } = usePage();
 
   const {
     register,
@@ -29,15 +25,14 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
   };
 
   return (
-    <section id="contactus" className="mx-auto w-5/6 pt-24 pb-32">
+    <section id={PageSection.ContactUs} className="mx-auto w-5/6 pt-24 pb-32">
       <motion.div
         onViewportEnter={() => {
-          setSelectedPage(SelectedPage.ContactUs);
+          setActiveSection(PageSection.ContactUs);
         }}
       >
-        {/* HEADER */}
         <motion.div
-          className="md:w-3/5"
+          className="lg:w-3/5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -56,11 +51,9 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
             adipiscing leo egestas nisi elit risus sit. Nunc cursus sagittis.
           </p>
         </motion.div>
-
-        {/* FORM AND IMAGE */}
-        <div className="mt-10 justify-between gap-8 md:flex">
+        <div className="mt-10 justify-between gap-8 lg:flex">
           <motion.div
-            className="mt-10 basis-3/5 md:mt-0"
+            className="mt-10 basis-3/5 lg:mt-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -79,7 +72,7 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
               method="POST"
             >
               <input
-                className={inputStyles}
+                className="mb-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white"
                 type="text"
                 placeholder="NAME"
                 {...register('name', {
@@ -94,9 +87,8 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
                     'Max length is 100 char.'}
                 </p>
               )}
-
               <input
-                className={inputStyles}
+                className="mb-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white"
                 type="text"
                 placeholder="EMAIL"
                 {...register('email', {
@@ -111,9 +103,8 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
                   {errors.email.type === 'pattern' && 'Invalid email address.'}
                 </p>
               )}
-
               <textarea
-                className={inputStyles}
+                className="mb-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white"
                 placeholder="MESSAGE"
                 rows={4}
                 cols={50}
@@ -130,7 +121,6 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
                     'Max length is 2000 char.'}
                 </p>
               )}
-
               <button
                 type="submit"
                 className="mt-5 rounded-lg bg-secondary-500 px-20 py-3 transition duration-500 hover:text-white"
@@ -139,9 +129,8 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
               </button>
             </form>
           </motion.div>
-
           <motion.div
-            className="relative mt-16 basis-2/5 md:mt-0"
+            className="relative mt-16 basis-2/5 lg:mt-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -151,10 +140,10 @@ const ContactUs = ({ setSelectedPage }: Props): JSX.Element => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <div className="w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1] md:before:content-evolvetext">
+            <div className="w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1] lg:before:content-evolvetext">
               <img
                 className="w-full"
-                alt="contact-us-page-graphic"
+                alt="contact-us-section"
                 src={contactUsSection}
               />
             </div>
