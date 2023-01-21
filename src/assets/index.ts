@@ -1,3 +1,4 @@
+export { default as benefitsSection } from './benefits-section.png';
 export { default as heroSection } from './hero-section.png';
 export { default as homePageText } from './home-page-text.png';
 export { default as logo } from './logo.png';
