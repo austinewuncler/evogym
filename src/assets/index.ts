@@ -5,6 +5,7 @@ export { default as classImage3 } from './class-image-3.png';
 export { default as classImage4 } from './class-image-4.png';
 export { default as classImage5 } from './class-image-5.png';
 export { default as classImage6 } from './class-image-6.png';
+export { default as contactUsSection } from './contact-us-section.png';
 export { default as heroSection } from './hero-section.png';
 export { default as homePageText } from './home-page-text.png';
 export { default as logo } from './logo.png';
