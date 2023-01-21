@@ -7,5 +7,10 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "conventionalCommits.scopes": ["hero", "benefits", "our-classes"]
+  "conventionalCommits.scopes": [
+    "hero",
+    "benefits",
+    "our-classes",
+    "contact-us"
+  ]
 }

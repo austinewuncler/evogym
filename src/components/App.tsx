@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { BenefitsSection } from '~/sections/benefits';
+import { ContactUsSection } from '~/sections/contact-us';
 import { HeroSection } from '~/sections/hero';
 import { OurClassesSection } from '~/sections/our-classes';
 
-import ContactUs from './ContactUs';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
       <HeroSection />
       <BenefitsSection />
       <OurClassesSection />
-      <ContactUs />
+      <ContactUsSection />
       <Footer />
     </div>
   );
