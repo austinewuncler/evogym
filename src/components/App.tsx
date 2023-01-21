@@ -4,6 +4,7 @@ import { SelectedPage } from '~/types';
 
 import Benefits from './Benefits';
 import ContactUs from './ContactUs';
+import Footer from './Footer';
 import Home from './Home';
 import Navbar from './NavBar';
 import OurClasses from './OurClasses';
@@ -39,6 +40,7 @@ const App = (): JSX.Element => {
       <Benefits setSelectedPage={setSelectedPage} />
       <OurClasses setSelectedPage={setSelectedPage} />
       <ContactUs setSelectedPage={setSelectedPage} />
+      <Footer />
     </div>
   );
 };
