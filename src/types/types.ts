@@ -11,7 +11,7 @@ export interface IBenefit {
   description: string;
 }
 
-export interface ClassType {
+export interface IClass {
   name: string;
   description?: string;
   image: string;
