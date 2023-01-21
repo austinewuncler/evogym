@@ -2,11 +2,11 @@ import React from 'react';
 
 import { BenefitsSection } from '~/sections/benefits';
 import { HeroSection } from '~/sections/hero';
+import { OurClassesSection } from '~/sections/our-classes';
 
 import ContactUs from './ContactUs';
 import Footer from './Footer';
 import Header from './Header';
-import OurClasses from './OurClasses';
 
 const App = (): JSX.Element => {
   return (
@@ -14,7 +14,7 @@ const App = (): JSX.Element => {
       <Header />
       <HeroSection />
       <BenefitsSection />
-      <OurClasses />
+      <OurClassesSection />
       <ContactUs />
       <Footer />
     </div>

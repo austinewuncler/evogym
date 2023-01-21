@@ -12,9 +12,3 @@ export interface IPageContext {
   setActiveSection: Dispatch<SetStateAction<PageSection>>;
   isTopOfPage: boolean;
 }
-
-export interface IClass {
-  name: string;
-  description?: string;
-  image: string;
-}
