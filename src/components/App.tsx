@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { BenefitsSection } from '~/sections/benefits';
 import { HeroSection } from '~/sections/hero';
 
-import BenefitsSection from './BenefitsSection';
 import ContactUs from './ContactUs';
 import Footer from './Footer';
 import Header from './Header';

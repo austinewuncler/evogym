@@ -1,4 +1,3 @@
-export { default as benefitsSection } from './benefits-section.png';
 export { default as classImage1 } from './class-image-1.png';
 export { default as classImage2 } from './class-image-2.png';
 export { default as classImage3 } from './class-image-3.png';

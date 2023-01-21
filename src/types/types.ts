@@ -13,12 +13,6 @@ export interface IPageContext {
   isTopOfPage: boolean;
 }
 
-export interface IBenefit {
-  icon: JSX.Element;
-  title: string;
-  description: string;
-}
-
 export interface IClass {
   name: string;
   description?: string;
