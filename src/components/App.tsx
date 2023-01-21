@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { SelectedPage } from '~/types';
 
+import Home from './Home';
 import Navbar from './NavBar';
 
 const App = (): JSX.Element => {
@@ -31,6 +32,7 @@ const App = (): JSX.Element => {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
+      <Home setSelectedPage={setSelectedPage} />
     </div>
   );
 };
