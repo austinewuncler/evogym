@@ -14,7 +14,7 @@ const Link = ({ children, section }: Props): JSX.Element => {
   return (
     <AnchorLink
       className={`transition hover:text-primary-300 ${
-        section === activeSection ? 'text-primary-500' : ''
+        section === activeSection ? 'font-bold text-primary-500' : ''
       }`}
       href={`#${section}`}
       onClick={() => {
