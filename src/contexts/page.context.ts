@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { IPageContext, PageSection } from '~/types';
+import { type IPageContext, PageSection } from '~/types';
 
 const PageContext = createContext<IPageContext>({
   activeSection: PageSection.Hero,

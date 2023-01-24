@@ -1,7 +1,12 @@
-import React, { PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import React, {
+  type PropsWithChildren,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { PageContext } from '~/contexts';
-import { IPageContext, PageSection } from '~/types';
+import { type IPageContext, PageSection } from '~/types';
 
 interface Props extends PropsWithChildren {}
 

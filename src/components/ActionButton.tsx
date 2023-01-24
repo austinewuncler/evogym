@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import { usePage } from '~/hooks';

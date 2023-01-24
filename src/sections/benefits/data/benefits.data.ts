@@ -4,7 +4,7 @@ import {
   UserGroupIcon,
 } from '~/components/icons';
 
-import { IBenefit } from '../types';
+import { type IBenefit } from '../types';
 
 export const benefits: IBenefit[] = [
   {

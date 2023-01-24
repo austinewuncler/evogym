@@ -6,7 +6,7 @@ import {
   classImage5,
   classImage6,
 } from '../assets';
-import { IClass } from '../types';
+import { type IClass } from '../types';
 
 export const classes: IClass[] = [
   {

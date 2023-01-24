@@ -1,8 +1,8 @@
-import React, { PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import { usePage } from '~/hooks';
-import { PageSection } from '~/types';
+import { type PageSection } from '~/types';
 
 interface Props extends PropsWithChildren {
   section: PageSection;
